@@ -1,6 +1,8 @@
 # flutter_sample_routing_ver3
 
-A new Flutter project.
+書籍「Flutter実践開発」第５章2節のうち、「Routerウィジェットによる画面遷移 Navigator2.0」の内容に基づくものです
+
+[Flutter実践開発 - iPhone／Android両対応アプリ開発のテクニック - ](https://gihyo.jp/book/2024/978-4-297-13993-3)
 
 ## Getting Started
 
