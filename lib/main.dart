@@ -7,20 +7,23 @@ void main() {
   ));
 }
 
+// 入れ子構造に修正
 final _router = GoRouter(
   routes: [
     GoRoute(
-      path: '/',
-      builder: (context, state) => const FirstScreen(),
-    ),
-    GoRoute(
-      path: '/second',
-      builder: (context, state) => const SecondScreen(),
-    ),
-    GoRoute(
-      path: '/third',
-      builder: (context, state) => const ThirdScreen(),
-    ),
+        path: '/',
+        builder: (context, state) => const FirstScreen(),
+        routes: [
+          GoRoute(
+              path: 'second',
+              builder: (context, state) => const SecondScreen(),
+              routes: [
+                GoRoute(
+                  path: 'third',
+                  builder: (context, state) => const ThirdScreen(),
+                )
+              ])
+        ]),
   ],
 );
 
@@ -46,7 +49,7 @@ class FirstScreen extends StatelessWidget {
             ElevatedButton(
               child: const Text('FirstからThirdへ'),
               onPressed: () {
-                GoRouter.of(context).go('/third');
+                GoRouter.of(context).go('/second/third');
               },
             ),
           ],
@@ -72,13 +75,13 @@ class SecondScreen extends StatelessWidget {
               ElevatedButton(
                 child: const Text('SecondからThirdへ'),
                 onPressed: () {
-                  GoRouter.of(context).go('/third');
+                  GoRouter.of(context).go('/second/third');
                 },
               ),
               ElevatedButton(
                 child: const Text('戻る'),
                 onPressed: () {
-                  Navigator.of(context).pop();
+                  GoRouter.of(context).pop();
                 },
               ),
             ],
@@ -103,7 +106,7 @@ class ThirdScreen extends StatelessWidget {
               ElevatedButton(
                 child: const Text('戻る'),
                 onPressed: () {
-                  Navigator.of(context).pop();
+                  GoRouter.of(context).pop();
                 },
               ),
             ],
