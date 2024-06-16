@@ -41,15 +41,22 @@ class FirstScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             ElevatedButton(
+                child: const Text('FirstからFirstへ'),
+                onPressed: () {
+                  GoRouter.of(context).push('/');
+                }),
+            ElevatedButton(
               child: const Text('FirstからSecondへ'),
               onPressed: () {
-                GoRouter.of(context).go('/second');
+                // GoRouter.of(context).go('/second');
+                GoRouter.of(context).push('/second');
               },
             ),
             ElevatedButton(
               child: const Text('FirstからThirdへ'),
               onPressed: () {
                 GoRouter.of(context).go('/second/third');
+                // GoRouter.of(context).push('/second/third');
               },
             ),
           ],
@@ -73,9 +80,16 @@ class SecondScreen extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               ElevatedButton(
+                child: const Text('SecondからSecondへ'),
+                onPressed: () {
+                  GoRouter.of(context).push('/second');
+                },
+              ),
+              ElevatedButton(
                 child: const Text('SecondからThirdへ'),
                 onPressed: () {
-                  GoRouter.of(context).go('/second/third');
+                  // GoRouter.of(context).go('/second/third');
+                  GoRouter.of(context).push('/second/third');
                 },
               ),
               ElevatedButton(
